@@ -104,3 +104,65 @@ public interface PaisRepository extends CrudRepository<Pais, Long> {
 
 
 ````
+
+Producer
+```java
+import com.jmoordb.core.annotation.DateSupport;
+import com.jmoordb.core.annotation.enumerations.JakartaSource;
+import java.io.Serializable;
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+@DateSupport(jakartaSource = JakartaSource.JAVAEE_LEGACY)
+public class MongoDBProducer implements Serializable {
+    
+}
+
+
+```
+
+Agregue al archivo application.properties
+
+```
+quarkus.mongodb.connection-string = mongodb://localhost:27017
+# mandatory if you don't specify the name of the database using @MongoEntity
+quarkus.mongodb.database = ejemplodb
+
+```
+
+
+
+# Para implementar el framework en Quarkus
+
+En el archivo pom.xml elimine
+
+```xml
+
+       <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.0.6</version>
+            <version>4.6.0</version>
+        </dependency>
+
+       <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-common</artifactId>
+            <version>3.1.0-M3</version>
+            <type>jar</type>
+        </dependency>
+```
+
+agregue
+
+```xml
+            <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-mongodb-client</artifactId>
+        </dependency>
+
+
+
+
+```
+
