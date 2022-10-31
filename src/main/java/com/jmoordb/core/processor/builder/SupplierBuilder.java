@@ -15,7 +15,7 @@ import org.bson.Document;
 
 public class SupplierBuilder {
 
-    public static final String LINE_BREAK = System.getProperty("line.separator");
+  public static final String LINE_BREAK = System.getProperty("line.separator");
     public static String TAB = "   ";
     private String className;
 
@@ -343,7 +343,7 @@ public class SupplierBuilder {
     }
     // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="StringBuilder tpJson(EntityData entityData, List<EntityField> entityFieldList, Element element)">
+    // <editor-fold defaultstate="collapsed" desc="StringBuilder toJson(EntityData entityData, List<EntityField> entityFieldList, Element element)">
     public static StringBuilder toJson(EntityData entityData, List<EntityField> entityFieldList, Element element) {
         StringBuilder builder = new StringBuilder();
         try {
@@ -430,7 +430,7 @@ public class SupplierBuilder {
     }
 
     // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="StringBuilder tpJson(EntityData entityData, List<EntityField> entityFieldList, Element element)">
+    // <editor-fold defaultstate="collapsed" desc="StringBuilder toDocument(EntityData entityData, List<EntityField> entityFieldList, Element element)">
     public static StringBuilder toDocument(EntityData entityData, List<EntityField> entityFieldList, Element element) {
         StringBuilder builder = new StringBuilder();
         try {
@@ -447,20 +447,23 @@ public class SupplierBuilder {
                 switch (entityField.getAnnotationType()) {
                     case EMBEDDED:
                         if (count > 0) {
-                            coma = "\n,";
+//                            coma = "\n,";
+                            coma = "\n";
                         }
                         sentence += coma + embeddedProcess(entityData, entityField);
                         count++;
                         break;
                     case REFERENCED:
                         if (count > 0) {
-                            coma = "\\n, \"";
+//                            coma = "\n, \"";
+                            coma = "\n";
                         }
                         if (entityField.getTypeReferenced().equals(TypeReferenced.EMBEDDED)) {
 
                             sentence += embeddedProcess(entityData, entityField);
                         } else {
-                            sentence += "+" + coma + referencedProcess(entityData, entityField, element);
+                         //   sentence += "+// Embedded of" + coma + referencedProcess(entityData, entityField, element);
+                            sentence += " " + coma + referencedProcess(entityData, entityField, element);
                         }
                         count++;
                         break;
