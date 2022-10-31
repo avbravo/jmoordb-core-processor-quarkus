@@ -136,16 +136,15 @@ public class RepositoryAnalizer {
                     VariableElement param = parameters.get(i);
 
                     TypeMirror secondArgumentType = param.asType();
-                    System.out.println("Quitar ++++++++++++++++++++++++++++++++++++++++");
-                    System.out.println("Quitar " + param.getSimpleName().toString() + " [[TypeMirror ]]]" + secondArgumentType);
+                    
 
                     if (parameters.get(i).getAnnotation(IncludeTime.class) != null) {
-                        System.out.println("Quitar------> es Include");
+                    
                         isIncludeTime = Boolean.TRUE;
                     } else {
 
                         if (parameters.get(i).getAnnotation(ExcludeTime.class) != null) {
-                            System.out.println("Quitar ------> es Exclude");
+                    
                             isExcludeTime = Boolean.TRUE;
                         } else {
                             isIncludeTime = Boolean.FALSE;

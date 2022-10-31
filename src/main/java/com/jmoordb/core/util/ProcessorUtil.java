@@ -476,16 +476,7 @@ public class ProcessorUtil {
 
 //            aqui validar si el nombre del campo esta incluido
 //                    con includeTimes o excludetimes, no si esta se asume que es excludeTime
-            System.out.println("Quitar++++++++++++++++++++++++++++++++++++++++++++++");
-            System.out.println("[getNameOfMethod()] " + repositoryMethod.getNameOfMethod());
-            System.out.println(" [getName()]" + repositoryMethod.getParamTypeElement().get(0).getName());
-            System.out.println(" [getType()]" + repositoryMethod.getParamTypeElement().get(0).getType());
-//             if(repositoryMethod.getExcludeTimeFields().size()==0 ){
-            System.out.println("  [ getEcludeTimeFields.size()  " + repositoryMethod.getExcludeTimeFields().size());
-            System.out.println("  [ getIncludeTimeFields().size()  " + repositoryMethod.getIncludeTimeFields().size());
-//             }
 
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++");
 
 //            AQUI FALTA VALIDAR CUANDO ES EXCLUDE TIME QUE PASA CUANDO ES EN HORAS 0
 //            Y HORA 23.
@@ -496,11 +487,11 @@ public class ProcessorUtil {
 //           SI EL COMPARADOR ES LT
 //            , LTE USAR HORA 23,59,59
             if (isTypeDate(repositoryMethod.getParamTypeElement().get(0).getType())) {
-                System.out.println("[ Es tipo Fecha ]");
+                
                 if (isIncludeTime(repositoryMethod, repositoryMethod.getParamTypeElement().get(0).getName())) {
-                    System.out.println(" [ Es IncludeTiem la hora debe viajar igual ]");
+                
                 } else {
-                    System.out.println(" [ Es ExcludeTiem se debe genera los isodate con valores 0,0,0]");
+                
                     String comparatorVar = lexemaToMongoComparator(repositoryMethod.getWorldAndToken().get(1));
                     if (comparatorVar.equals("gt") || comparatorVar.equals("gte")) {
                         //  Aqui SE USA EL METODO  que asigne a 0 las horas mimnutos y segundos

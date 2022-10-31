@@ -474,7 +474,7 @@ public class AutosecuenceRepositorySourceBuilder {
                 .append(LINE_BREAK)
                 .append(TAB + TAB + TAB + TAB + " Document iterable = collection.findOneAndUpdate(doc, inc, findOneAndUpdateOptions);")
                 .append(LINE_BREAK)
-                .append(TAB + TAB + TAB + TAB + "System.out.println(\"Quitar iterable.toJson()\"+iterable.toJson());\n")
+                
                 .append(LINE_BREAK)
                 .append(TAB + TAB + TAB + TAB + " Autosequence autosequence = new Autosequence(databasecollection, iterable.getLong(\"sequence\"));")
                 .append(LINE_BREAK)

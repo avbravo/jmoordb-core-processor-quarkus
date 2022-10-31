@@ -13,6 +13,14 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>2.13.3.Final</quarkus.platform.version>
     </properties>
+    
+    <developers>
+    <developer>
+      <id>avbravo</id>
+      <name>Aristides Villarreal Bravo</name>
+    </developer>
+  </developers>
+  
      <dependencyManagement>
         <dependencies>
             <dependency>

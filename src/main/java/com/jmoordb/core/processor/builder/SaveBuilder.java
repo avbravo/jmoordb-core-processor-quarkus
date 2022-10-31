@@ -49,7 +49,7 @@ public class SaveBuilder {
                     + "                  " + calculateReturn + "\n"
                     + "               }\n"
                     + "              //Jsonb jsonb = JsonbBuilder.create();\n"
-                    + "              // System.out.println(\" Quitar jsonb.toJSon() \"+jsonb.toJson(" + repositoryData.getNameOfEntityLower() + "));\n"
+                    
                     + "              // InsertOneResult insertOneResult = collection.insertOne(Document.parse(jsonb.toJson(" + repositoryData.getNameOfEntityLower() + ")));\n"
                     + "               //  InsertOneResult insertOneResult = collection.insertOne(Document.parse(" +repositoryData.getNameOfEntityLower() +"Supplier.toJson(" + repositoryData.getNameOfEntityLower() + ")));\n"
                     + "               InsertOneResult insertOneResult = collection.insertOne("+ repositoryData.getNameOfEntityLower()+"Supplier.toDocument(" + repositoryData.getNameOfEntityLower() + "));\n"

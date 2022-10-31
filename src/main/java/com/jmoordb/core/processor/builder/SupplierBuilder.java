@@ -49,21 +49,9 @@ public class SupplierBuilder {
                         break;
                     case COLUMN:
                         if (entityField.getReturnType().equals(ReturnType.DATE)) {
-                            // sentence += "\t\tjava.util.Date " + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate = com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "()));\n";
-//                            sentence += "\t\tjava.util.Date " + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate = com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "()));\n";
-//                         sentence +=" System.out.println(\"Quitar:ISODATE \"+com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "() ) );\n";
-//                         sentence +=" System.out.println(\"Quitar: stringToISODATE \"+com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "() ) ));\n";
-//                                 
-//                       String isoDate ="com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "())";
-//                            sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" +  isoDate+ ").append(\"\\\"\");\n";
-//                            sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate"+ ").append(\"\\\"\");\n";
-//                            sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate"+ ").append(\"\\\"\");\n";
-
-                           // sentence += "System.out.println(\"Quitar.Document.getString()\"+com.jmoordb.core.util.JmoordbCoreDateUtil.stringToISODate(document.getString(\"" + entityField.getNameOfMethod() + "\")));\n";
+                            
                             cast = castConverter(entityField.getReturnTypeValue(), entityField.getNameOfMethod());
                             sentence += "\t" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".set" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "(" + cast + ");\n";
-//                            cast = "com.jmoordb.core.util.JmoordbCoreDateUtil.stringToISODate(document.getString(\"" + entityField.getNameOfMethod() + "\"))";
-//                            sentence += "\t" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".set" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "(" + cast + ");\n";
                         } else {
                             cast = castConverter(entityField.getReturnTypeValue(), entityField.getNameOfMethod());
                             sentence += "\t" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".set" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "(" + cast + ");\n";
@@ -80,8 +68,7 @@ public class SupplierBuilder {
                     + "    public " + entityData.getEntityName() + " get(Supplier<? extends " + entityData.getEntityName() + "> s, Document document) {\n"
                     + "        " + JmoordbCoreUtil.letterToUpper(entityData.getEntityName()) + " " + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + "= s.get(); \n"
                     + "        try {\n"
-                    + "         // Quitar\n"
-                    + "             System.out.println(\"Quitar Supplier \"+document.toJson());"
+                    
                     + sentence + "\n"
                     + "         } catch (Exception e) {\n"
                     + "              MessagesUtil.error(MessagesUtil.nameOfClassAndMethod() + \" \" + e.getLocalizedMessage());\n"
@@ -393,13 +380,10 @@ public class SupplierBuilder {
                         if (entityField.getReturnType().equals(ReturnType.DATE)) {
                             // sentence += "\t\tjava.util.Date " + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate = com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate("+JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "()));\n";
                             sentence += "\t\tjava.util.Date " + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate = com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate(" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "()));\n";
-//                            sentence += " System.out.println(\"Quitar:ISODATE \"+com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate(" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "() ) );\n";
-//                            sentence += " System.out.println(\"Quitar: stringToISODATE \"+com.jmoordb.core.util.JmoordbCoreDateUtil.stringToDate(com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate(" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "() ) ));\n";
 
                             String isoDate = "com.jmoordb.core.util.JmoordbCoreDateUtil.iSODate(" + JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "())";
                             sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + isoDate + ").append(\"\\\"\");\n";
-//                            sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate"+ ").append(\"\\\"\");\n";
-//                            sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "IsoDate"+ ").append(\"\\\"\");\n";
+
                         } else {
                             getMethod = JmoordbCoreUtil.letterToLower(entityData.getEntityName()) + ".get" + JmoordbCoreUtil.letterToUpper(entityField.getNameOfMethod()) + "()";
                             sentence += "\t\tsb.append(\"" + coma + JmoordbCoreUtil.letterToLower(entityField.getNameOfMethod()) + "\\\":\\\"\").append(" + getMethod + ").append(\"\\\"\");\n";

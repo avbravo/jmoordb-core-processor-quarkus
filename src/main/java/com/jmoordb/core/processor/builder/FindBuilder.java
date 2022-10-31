@@ -87,7 +87,7 @@ public class FindBuilder {
 
                 sentence += filter + "\n";
                 
-                sentence += "\n    System.out.println(\"Quitar [ filter is ]: \"+filter.toBsonDocument().toJson());\n\n";
+                
                 if (!repositoryMethod.getReturnType().equals(ReturnType.OPTIONAL)) {
                     sentence += "\t\tcursor = collection.find( filter )\n"
                             + "\t\t" + paginationSource
@@ -99,7 +99,7 @@ public class FindBuilder {
                             + "\t\t" + sortSource
                             + "\t.first();\n";
                     
-                    sentence +="\n\nSystem.out.println(\"Quitar RepositoryImpl doc.toJson()\"+doc.toJson());\n\n";
+                    
                 }
             }
 
